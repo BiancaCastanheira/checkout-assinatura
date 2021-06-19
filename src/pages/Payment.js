@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 import { postClientCardInfo } from "../api/paymentApi";
 import ButtonCheckout from "../components/ButtonCheckout";
@@ -14,6 +18,7 @@ const Payment = () => {
   const [cpf, setCpf] = useState("");
   const [coupon, setCoupon] = useState("");
   const [installments, setInstallments] = useState("");
+  const possibleInstallments = localStorage.getItem("installments");
 
   const postClientCard = () => {
     const clientCard = {
@@ -32,6 +37,11 @@ const Payment = () => {
       console.log(respose);
     });
   };
+
+  let menuItemsInstallments = [];
+  for (let i = 1; i <= possibleInstallments; i++) {
+    menuItemsInstallments.push(<MenuItem value={i}>{i}</MenuItem>);
+  }
 
   return (
     <div>
@@ -97,13 +107,17 @@ const Payment = () => {
       </Grid>
 
       <Grid>
-        <TextField
-          id="installments"
-          label="Número de parcelas"
-          fullWidth={true}
-          value={installments}
-          onChange={(e) => setInstallments(e.target.value)}
-        />
+        <FormControl fullWidth={true}>
+          <InputLabel id="installments">Número de parcelas</InputLabel>
+          <Select
+            labelId="installments"
+            id="installments"
+            value={installments}
+            onChange={(e) => setInstallments(e.target.value)}
+          >
+            {menuItemsInstallments}
+          </Select>
+        </FormControl>
       </Grid>
 
       <ButtonCheckout
