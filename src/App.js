@@ -5,11 +5,11 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: ["DM Sans"].join(","),
   },
-  //pallete: {
-  //   primary: {
-  //     main: ""
-  //   }
-  // }
+  pallete: {
+    primary: {
+      main: "black",
+    },
+  },
 });
 
 function App() {
