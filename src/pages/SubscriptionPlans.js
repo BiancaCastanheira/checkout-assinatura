@@ -1,16 +1,34 @@
 import React, { useEffect, useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
-import PromotionCards from "../components/PromotionCards";
+import PromotionCard from "../components/PromotionCard";
 import ButtonCheckout from "../components/ButtonCheckout";
 
 import { getSubscriptionPlans } from "../api/SubscriptionPlanApi";
 import { getClientData } from "../api/DummyLoginApi";
 
+const useStyles = makeStyles((theme) => ({
+  textCenter: {
+    textAlign: "center",
+  },
+  marginBox: {
+    marginTop: 10,
+    marginRight: 30,
+    marginLeft: 50,
+  },
+  marginTop3: {
+    marginTop: 12,
+  },
+}));
+
 const SubscriptionPlans = () => {
+  const classes = useStyles();
+
   const [planOptions, setPlanOptions] = useState([]);
   const [clientData, setClientData] = useState({});
   const [selectedPlanId, setSelectedPlanId] = useState("");
@@ -57,27 +75,52 @@ const SubscriptionPlans = () => {
 
   return (
     <div>
-      <Typography variant="h5">Confira o seu plano:</Typography>
-      <Chip label={clientData.email} variant="outlined" />
-      {planOptions.map((planOption) => (
-        <PromotionCards
-          key={planOption.id}
-          planOption={planOption}
-          isSelected={planOption.id === selectedPlanId}
-          onPlanSelect={onPlanSelect}
-        />
-      ))}
-      <Button>
-        <Typography variant="body2">
-          Sobre a cobrança
-          <HelpOutlineIcon style={{ fontSize: "medium" }} />
-        </Typography>
-      </Button>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={8}>
+          <Typography variant="h5">Confira o seu plano:</Typography>
+          <Chip label={clientData.email} variant="outlined" />
+        </Grid>
+      </Grid>
 
-      <ButtonCheckout
-        buttonText="QUERO ESTE PLANO"
-        buttonClicked={buttonClicked}
-      />
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        {planOptions.map((planOption) => (
+          <Grid item xs={8}>
+            <PromotionCard
+              key={planOption.id}
+              planOption={planOption}
+              isSelected={planOption.id === selectedPlanId}
+              onPlanSelect={onPlanSelect}
+            />
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container spacing={1} className={classes.marginTop3}>
+        <Grid item xs={12} className={classes.textCenter}>
+          <Button>
+            <Typography variant="body2">
+              Sobre a cobrança
+              <HelpOutlineIcon style={{ fontSize: "medium" }} />
+            </Typography>
+          </Button>
+        </Grid>
+        <Grid item xs={12} className={classes.textCenter}>
+          <ButtonCheckout
+            buttonText="QUERO ESTE PLANO"
+            buttonClicked={buttonClicked}
+          />
+        </Grid>
+      </Grid>
     </div>
   );
 };
