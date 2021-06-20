@@ -95,6 +95,52 @@ const Payment = () => {
         Insira seus dados de pagamento abaixo:
       </Typography>
 
+      <Grid container spacing={1}>
+        <Grid item xs={1}>
+          <img
+            alt="master-card-logo"
+            src="https://assinatura.pebmed.com.br/img/icon-master-card.4467b94e.svg"
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <img
+            alt="dinners-logo"
+            src="https://assinatura.pebmed.com.br/img/icon-dinners-club.8065b5cd.svg"
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <img
+            alt=""
+            american-express-logo
+            src="https://assinatura.pebmed.com.br/img/icon-dinners-club.8065b5cd.svg"
+          />
+        </Grid>
+        <Grid>
+          <img
+            alt="visa-logo"
+            src="https://assinatura.pebmed.com.br/img/icon-visa.97b81c40.svg"
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <img
+            alt="elo-logo"
+            src="https://assinatura.pebmed.com.br/img/icon-elo.2422457a.svg"
+          />
+        </Grid>
+      </Grid>
+
+      <Grid container>
+        <Grid item xs>
+          <Typography variant="span">Pagamentos por</Typography>
+        </Grid>
+        <Grid item xs={1}>
+          <img
+            alt="iugu-logo"
+            src="https://assinatura.pebmed.com.br/img/icon-iugu.fdf98c0c.svg"
+          />
+        </Grid>
+      </Grid>
+
       <TextField
         id="cartao"
         label="Número do cartão"
