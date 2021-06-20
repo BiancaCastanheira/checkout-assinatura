@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ButtonCheckout = ({ buttonText, buttonClicked }) => {
+const ButtonCheckout = ({ buttonText, buttonClicked, disabled }) => {
   const classes = useStyles();
 
   return (
@@ -19,6 +19,7 @@ const ButtonCheckout = ({ buttonText, buttonClicked }) => {
       variant="contained"
       className={classes.buttonStyle}
       onClick={buttonClicked}
+      disabled={disabled}
     >
       {buttonText}
     </Button>
