@@ -43,8 +43,15 @@ const SubscriptionPlans = () => {
     );
     localStorage.setItem("offerId", selectedPlan.id);
     localStorage.setItem("userId", clientData.id);
+    localStorage.setItem("clientEmail", clientData.email);
     localStorage.setItem("installments", selectedPlan.installments);
     localStorage.setItem("gateway", selectedPlan.gateway);
+    localStorage.setItem("planTitle", selectedPlan.title);
+    localStorage.setItem("description", selectedPlan.description);
+    localStorage.setItem(
+      "promotionalPrice",
+      selectedPlan.fullPrice - selectedPlan.discountAmmount
+    );
     window.location.href = "/payment";
   };
 
