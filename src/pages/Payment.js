@@ -48,7 +48,7 @@ const Payment = () => {
     };
     postClientCardInfo(clientCard)
       .then((respose) => {
-        console.log(respose);
+        window.location.href = "/purchase-confirmation";
       })
       .catch((error) => {
         console.error(
