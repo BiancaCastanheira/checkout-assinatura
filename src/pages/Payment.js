@@ -48,6 +48,8 @@ const Payment = () => {
     };
     postClientCardInfo(clientCard)
       .then((respose) => {
+        localStorage.setItem("clientCpf", cpf);
+        localStorage.setItem("choosenNumInstallments", installments);
         window.location.href = "/purchase-confirmation";
       })
       .catch((error) => {
