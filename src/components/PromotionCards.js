@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Chip from "@material-ui/core/Chip";
 import Card from "@material-ui/core/Card";
 import Radio from "@material-ui/core/Radio";
 
-const PromotionCards = ({ planOption }) => {
-  const [selectedPlan, setSelectedPlan] = useState("");
-
-  const handleChange = (e) => {
-    setSelectedPlan(e.target.value);
-  };
+const PromotionCards = ({ planOption, isSelected, onPlanSelect }) => {
   return (
     <div>
       <Card variant="outlined">
@@ -35,11 +30,11 @@ const PromotionCards = ({ planOption }) => {
           ""
         )}
         <Radio
-          checked={selectedPlan === "anual"}
-          onChange={handleChange}
-          value="anual"
+          checked={isSelected}
+          onChange={onPlanSelect}
+          value={planOption.id}
+          color="default"
           name="radio-button"
-          inputProps={{ "aria-label": "A" }}
         />
       </Card>
     </div>
