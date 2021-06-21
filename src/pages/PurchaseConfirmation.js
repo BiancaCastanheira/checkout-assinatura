@@ -69,7 +69,9 @@ const PurchaseConfirmation = () => {
 
       <Grid container spacing={1} justify="center" style={{ marginTop: 8 }}>
         <Grid item xs={false} className={classes.textCenter}>
-          <Typography variant="h5">Parabéns!</Typography>
+          <Typography variant="h5" style={{ marginBottom: 8 }}>
+            Parabéns!
+          </Typography>
           <Typography variant="subtitle1" className={classes.lightColor}>
             Sua assinatura foi realizada com sucesso.
           </Typography>
@@ -91,7 +93,10 @@ const PurchaseConfirmation = () => {
                       </Avatar>
                     </Grid>
                     <Grid item xs style={{ textAlign: "right" }}>
-                      <Typography variant="subtitle1">
+                      <Typography
+                        variant="subtitle1"
+                        style={{ marginLeft: 48 }}
+                      >
                         {planTitle} | {description}
                       </Typography>
                       <Typography variant="body1">
@@ -131,7 +136,9 @@ const PurchaseConfirmation = () => {
       <Grid container spacing={0} justify="center" style={{ marginTop: 24 }}>
         <Grid item xs={12} className={classes.textCenter}>
           <Button size="small">
-            <Typography variant="overline">Gerenciar assinatura</Typography>
+            <Typography variant="overline" style={{ color: "#191847" }}>
+              Gerenciar assinatura
+            </Typography>
           </Button>
         </Grid>
         <Grid item xs={12} className={classes.textCenter}>
