@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import SubscriptionPlans from "./pages/SubscriptionPlans";
 import Payment from "./pages/Payment";
@@ -16,6 +16,9 @@ const Routes = () => {
           path="/purchase-confirmation"
           component={PurchaseConfirmation}
         />
+        <Route exact path="/">
+          <Redirect to="/subscription-plans" />
+        </Route>
       </Switch>
     </BrowserRouter>
   );
