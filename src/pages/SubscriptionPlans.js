@@ -82,8 +82,14 @@ const SubscriptionPlans = () => {
         className={classes.marginTop3}
       >
         <Grid item xs={false}>
-          <Typography variant="h5">Confira o seu plano:</Typography>
-          <Chip label={clientData.email} variant="outlined" />
+          <Typography variant="h5" style={{ marginBottom: 8 }}>
+            Confira o seu plano:
+          </Typography>
+          <Chip
+            label={clientData.email}
+            variant="outlined"
+            style={{ marginBottom: 24 }}
+          />
         </Grid>
       </Grid>
 
@@ -113,7 +119,7 @@ const SubscriptionPlans = () => {
       >
         <Grid item xs={false}>
           <Button>
-            <Typography variant="body2">
+            <Typography variant="body2" style={{ marginTop: 16 }}>
               Sobre a cobrança
               <HelpOutlineIcon style={{ fontSize: "medium" }} />
             </Typography>

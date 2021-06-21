@@ -1,7 +1,7 @@
 const ClientLogin = {
   id: 1,
   name: "Bianca Castanheira",
-  email: "biancacostacastanheira@gmail.com",
+  email: "teste@gmail.com",
 };
 
 export const getClientData = async () => {
