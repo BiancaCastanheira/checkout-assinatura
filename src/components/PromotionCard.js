@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 
 const useStyles = makeStyles((theme) => ({
   promotionCard: {
+    minHeight: 120,
     maxWidth: 500,
     borderWidth: 2,
     borderColor: "#191847",

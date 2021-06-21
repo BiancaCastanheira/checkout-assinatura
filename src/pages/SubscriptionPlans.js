@@ -81,7 +81,7 @@ const SubscriptionPlans = () => {
         justify="center"
         className={classes.marginTop3}
       >
-        <Grid item xs={8}>
+        <Grid item xs={false}>
           <Typography variant="h5">Confira o seu plano:</Typography>
           <Chip label={clientData.email} variant="outlined" />
         </Grid>
@@ -94,7 +94,7 @@ const SubscriptionPlans = () => {
         className={classes.marginTop3}
       >
         {planOptions.map((planOption) => (
-          <Grid item xs={8}>
+          <Grid item xs={false}>
             <PromotionCard
               key={planOption.id}
               planOption={planOption}
@@ -105,8 +105,13 @@ const SubscriptionPlans = () => {
         ))}
       </Grid>
 
-      <Grid container spacing={1} className={classes.marginTop3}>
-        <Grid item xs={12} className={classes.textCenter}>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={false}>
           <Button>
             <Typography variant="body2">
               Sobre a cobrança
@@ -114,7 +119,14 @@ const SubscriptionPlans = () => {
             </Typography>
           </Button>
         </Grid>
-        <Grid item xs={12} className={classes.textCenter}>
+      </Grid>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={false}>
           <ButtonCheckout
             buttonText="QUERO ESTE PLANO"
             buttonClicked={buttonClicked}
