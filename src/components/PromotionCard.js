@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     borderWidth: 2,
     borderColor: "#191847",
     borderRadius: 15,
+    marginBottom: 16,
   },
   discountChip: {
     marginLeft: 8,

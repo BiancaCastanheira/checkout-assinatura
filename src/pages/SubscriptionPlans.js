@@ -100,13 +100,15 @@ const SubscriptionPlans = () => {
         className={classes.marginTop3}
       >
         {planOptions.map((planOption) => (
-          <Grid item xs={false}>
-            <PromotionCard
-              key={planOption.id}
-              planOption={planOption}
-              isSelected={planOption.id === selectedPlanId}
-              onPlanSelect={onPlanSelect}
-            />
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <PromotionCard
+                key={planOption.id}
+                planOption={planOption}
+                isSelected={planOption.id === selectedPlanId}
+                onPlanSelect={onPlanSelect}
+              />
+            </Grid>
           </Grid>
         ))}
       </Grid>
@@ -119,9 +121,9 @@ const SubscriptionPlans = () => {
       >
         <Grid item xs={false}>
           <Button>
-            <Typography variant="body2" style={{ marginTop: 16 }}>
+            <Typography variant="overline" style={{ marginTop: 16 }}>
               Sobre a cobrança
-              <HelpOutlineIcon style={{ fontSize: "medium" }} />
+              <HelpOutlineIcon style={{ fontSize: 12, marginLeft: 8 }} />
             </Typography>
           </Button>
         </Grid>
