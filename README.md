@@ -1,3 +1,44 @@
+OBJETIVO:
+Desenvolver front-end de um sistema de checkout em que o usuário pode fazer uma assinatura anual ou mensal.
+
+APLICAÇÃO:
+
+- Acesse pelo link: https://checkout-assinatura.vercel.app
+- Ou siga as instruções abaixo para rodar localmente.
+
+VIDEO DE DEMONSTRAÇÃO:
+https://youtu.be/13gIxbvUU0E
+
+STACK UTILIZADA:
+
+- Css, HTML;
+- Javascript;
+- React.js;
+- Biblioteca de CSS: Material ui.
+
+TELAS:
+[X] Tela de planos;
+[X] Tela de pagamento;
+[X] Tela de confirmação.
+
+PROTÓTIPO DE REFERÊNCIA:
+
+- Checkout: https://drive.google.com/file/d/1CdI5oEBHqNBMBfzHQFHwCvZY8WB5Iv2B/view?usp=sharing
+- Confirmação: https://drive.google.com/file/d/1kNIdi4mBjPmWzWJMLfGfudcUz0YyTUnM/view?usp=sharing
+
+ENDPOINT CONSUMIDOS:
+
+- https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/offer
+- https://private-0ced4-pebmeddesafiofrontend.apiary-mock.com/subscription
+
+REQUISITOS FUNCIONAIS:
+[X] Validação de dados;
+[X] Utilização da fonte Sans;
+[X] Layout responsivo;
+[X] Ferramenta de qualidade: Prettier e ESLint.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
