@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
@@ -16,7 +17,28 @@ import {
 import { postClientCardInfo } from "../api/paymentApi";
 import ButtonCheckout from "../components/ButtonCheckout";
 
+const useStyles = makeStyles((theme) => ({
+  marginTop3: {
+    marginTop: 12,
+  },
+  lightColor: {
+    color: "#bcc8c8",
+    fontSize: 10,
+  },
+  marginBetween: {
+    marginBottom: 20,
+  },
+  marginBox: {
+    width: 800,
+    textAlign: "center",
+  },
+  cardFlag: {
+    maxWidth: 50,
+  },
+}));
+
 const Payment = () => {
+  const classes = useStyles();
   const [cardNumber, setCardNumber] = useState("");
   const [cardNumberError, setCardNumberError] = useState(false);
   const [expirationDate, setExpirationDate] = useState("");
@@ -92,38 +114,52 @@ const Payment = () => {
 
   return (
     <div>
-      <Typography variant="h5">Estamos quase lá!</Typography>
-      <Typography variant="subtitle2">
-        Insira seus dados de pagamento abaixo:
-      </Typography>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={8}>
+          <Typography variant="h5">Estamos quase lá!</Typography>
+          <Typography variant="subtitle2">
+            Insira seus dados de pagamento abaixo:
+          </Typography>
+        </Grid>
+      </Grid>
 
-      <Grid container spacing={1}>
-        <Grid item xs={1}>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={1} className={classes.cardFlag}>
           <img
             alt="master-card-logo"
             src="https://assinatura.pebmed.com.br/img/icon-master-card.4467b94e.svg"
           />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1} className={classes.cardFlag}>
           <img
             alt="dinners-logo"
             src="https://assinatura.pebmed.com.br/img/icon-dinners-club.8065b5cd.svg"
           />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1} className={classes.cardFlag}>
           <img
             alt=""
             american-express-logo
-            src="https://assinatura.pebmed.com.br/img/icon-dinners-club.8065b5cd.svg"
+            src="https://assinatura.pebmed.com.br/img/icon-american-express.3dbb196f.svg"
           />
         </Grid>
-        <Grid>
+        <Grid item xs={1} className={classes.cardFlag}>
           <img
             alt="visa-logo"
             src="https://assinatura.pebmed.com.br/img/icon-visa.97b81c40.svg"
           />
         </Grid>
-        <Grid item xs={1}>
+        <Grid item xs={1} className={classes.cardFlag}>
           <img
             alt="elo-logo"
             src="https://assinatura.pebmed.com.br/img/icon-elo.2422457a.svg"
@@ -131,9 +167,16 @@ const Payment = () => {
         </Grid>
       </Grid>
 
-      <Grid container>
-        <Grid item xs>
-          <Typography variant="span">Pagamentos por</Typography>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        className={classes.marginTop3}
+      >
+        <Grid item xs={false}>
+          <Typography variant="span" className={classes.lightColor}>
+            <span>Pagamentos por</span>
+          </Typography>
         </Grid>
         <Grid item xs={1}>
           <img
@@ -143,115 +186,130 @@ const Payment = () => {
         </Grid>
       </Grid>
 
-      <TextField
-        id="cartao"
-        label="Número do cartão"
-        placeholder="0000 0000 0000 0000"
-        fullWidth={true}
-        required={true}
-        value={cardNumber}
-        onChange={(e) => setCardNumber(maskCreditCardNumber(e.target.value))}
-        onBlur={() => setCardNumberError(cardNumber.length < 19)}
-        error={cardNumberError}
-        helperText={cardNumberError ? "Número do cartão inválido." : ""}
-      />
-
-      <Grid container spacing={1}>
-        <Grid item xs>
+      <Grid container xs={12} justify="center">
+        <div className={classes.marginBox}>
           <TextField
-            id="expiration-date"
-            label="Validade"
-            placeholder="MM/AA"
+            id="cartao"
+            label="Número do cartão"
+            placeholder="0000 0000 0000 0000"
+            fullWidth={true}
+            className={classes.marginBetween}
             required={true}
-            value={expirationDate}
+            value={cardNumber}
             onChange={(e) =>
-              setExpirationDate(maskExpirationDate(e.target.value))
+              setCardNumber(maskCreditCardNumber(e.target.value))
             }
-            onBlur={() => setExpirationDateError(expirationDate.length < 5)}
-            error={expirationDateError}
-            helperText={expirationDateError ? "Data inválida" : ""}
+            onBlur={() => setCardNumberError(cardNumber.length < 19)}
+            error={cardNumberError}
+            helperText={cardNumberError ? "Número do cartão inválido." : ""}
           />
-        </Grid>
-        <Grid item xs>
-          <TextField
-            id="cvv"
-            label="CVV"
-            placeholder="000"
-            required={true}
-            value={cvv}
-            onChange={(e) => setCvv(maskCvv(e.target.value))}
-            onBlur={() => setCvvError(cvv.length < 3)}
-            error={cvvError}
-            helperText={cvvError ? "CVV inválido" : ""}
+
+          <Grid container spacing={1}>
+            <Grid item xs>
+              <TextField
+                id="expiration-date"
+                label="Validade"
+                fullWidth="true"
+                className={classes.marginBetween}
+                placeholder="MM/AA"
+                required={true}
+                value={expirationDate}
+                onChange={(e) =>
+                  setExpirationDate(maskExpirationDate(e.target.value))
+                }
+                onBlur={() => setExpirationDateError(expirationDate.length < 5)}
+                error={expirationDateError}
+                helperText={expirationDateError ? "Data inválida" : ""}
+              />
+            </Grid>
+            <Grid item xs>
+              <TextField
+                id="cvv"
+                label="CVV"
+                fullWidth="true"
+                className={classes.marginBetween}
+                placeholder="000"
+                required={true}
+                value={cvv}
+                onChange={(e) => setCvv(maskCvv(e.target.value))}
+                onBlur={() => setCvvError(cvv.length < 3)}
+                error={cvvError}
+                helperText={cvvError ? "CVV inválido" : ""}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid>
+            <TextField
+              id="card-holder"
+              label="Nome impresso no cartão"
+              placeholder="Seu nome"
+              fullWidth={true}
+              className={classes.marginBetween}
+              required={true}
+              value={cardHolder}
+              onChange={(e) => setCardHolder(e.target.value)}
+              onBlur={() => setCardHolderError(cardHolder.length < 5)}
+              error={cardHolderError}
+              helperText={cardHolderError ? "Nome inválido" : ""}
+            />
+          </Grid>
+
+          <Grid>
+            <TextField
+              id="cpf"
+              label="CPF"
+              placeholder="000.000.000-00"
+              fullWidth={true}
+              className={classes.marginBetween}
+              required={true}
+              value={cpf}
+              onChange={(e) => setCpf(maskCpf(e.target.value))}
+              onBlur={() => setCpfError(cpf.length < 14)}
+              error={cpfError}
+              helperText={cpfError ? "CPF inválido" : ""}
+            />
+          </Grid>
+
+          <Grid>
+            <TextField
+              id="coupon"
+              label="Cupom"
+              placeholder="Insira aqui"
+              fullWidth={true}
+              className={classes.marginBetween}
+              required={false}
+              value={coupon}
+              onChange={(e) => setCoupon(e.target.value)}
+            />
+          </Grid>
+
+          <Grid>
+            <FormControl fullWidth={true} required={true}>
+              <InputLabel id="installments">Número de parcelas</InputLabel>
+              <Select
+                labelId="installments"
+                id="installments"
+                className={classes.marginBetween}
+                placeholder="Selecionar"
+                value={installments}
+                onChange={(e) => {
+                  setInstallments(e.target.value);
+                  setButtonDisabled(false);
+                }}
+              >
+                {menuItemsInstallments}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <ButtonCheckout
+            buttonText="FINALIZAR PAGAMENTO"
+            buttonClicked={postClientCard}
+            disabled={!isValid}
           />
-        </Grid>
+        </div>
       </Grid>
-
-      <Grid>
-        <TextField
-          id="card-holder"
-          label="Nome impresso no cartão"
-          placeholder="Seu nome"
-          fullWidth={true}
-          required={true}
-          value={cardHolder}
-          onChange={(e) => setCardHolder(e.target.value)}
-          onBlur={() => setCardHolderError(cardHolder.length < 5)}
-          error={cardHolderError}
-          helperText={cardHolderError ? "Nome inválido" : ""}
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          id="cpf"
-          label="CPF"
-          placeholder="000.000.000-00"
-          fullWidth={true}
-          required={true}
-          value={cpf}
-          onChange={(e) => setCpf(maskCpf(e.target.value))}
-          onBlur={() => setCpfError(cpf.length < 14)}
-          error={cpfError}
-          helperText={cpfError ? "CPF inválido" : ""}
-        />
-      </Grid>
-
-      <Grid>
-        <TextField
-          id="coupon"
-          label="Cupom"
-          placeholder="Insira aqui"
-          fullWidth={true}
-          required={false}
-          value={coupon}
-          onChange={(e) => setCoupon(e.target.value)}
-        />
-      </Grid>
-
-      <Grid>
-        <FormControl fullWidth={true} required={true}>
-          <InputLabel id="installments">Número de parcelas</InputLabel>
-          <Select
-            labelId="installments"
-            id="installments"
-            placeholder="Selecionar"
-            value={installments}
-            onChange={(e) => {
-              setInstallments(e.target.value);
-              setButtonDisabled(false);
-            }}
-          >
-            {menuItemsInstallments}
-          </Select>
-        </FormControl>
-      </Grid>
-
-      <ButtonCheckout
-        buttonText="FINALIZAR PAGAMENTO"
-        buttonClicked={postClientCard}
-        disabled={!isValid}
-      />
     </div>
   );
 };
