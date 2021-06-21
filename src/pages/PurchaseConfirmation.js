@@ -147,7 +147,11 @@ const PurchaseConfirmation = () => {
           </Button>
         </Grid>
         <Grid item xs={12} className={classes.textCenter}>
-          <ButtonCheckout buttonText="IR PARA A HOME" size="large" />
+          <ButtonCheckout
+            buttonText="IR PARA A HOME"
+            buttonClicked={() => (window.location.href = "/subscription-plans")}
+            size="large"
+          />
         </Grid>
       </Grid>
     </div>
