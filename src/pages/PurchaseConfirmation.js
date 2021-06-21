@@ -53,7 +53,12 @@ const PurchaseConfirmation = () => {
 
   return (
     <div>
-      <Grid container spacing={1} justify="center" style={{ marginTop: 16 }}>
+      <Grid
+        container
+        spacing={1}
+        justify="center"
+        style={{ marginTop: 16, marginBottom: 36 }}
+      >
         <Grid item xs={false}>
           <img src="favicon.png" alt="logo" />
         </Grid>
@@ -69,7 +74,7 @@ const PurchaseConfirmation = () => {
 
       <Grid container spacing={1} justify="center" style={{ marginTop: 8 }}>
         <Grid item xs={false} className={classes.textCenter}>
-          <Typography variant="h5" style={{ marginBottom: 8 }}>
+          <Typography variant="h5" style={{ marginBottom: 8, marginTop: 4 }}>
             Parabéns!
           </Typography>
           <Typography variant="subtitle1" className={classes.lightColor}>
